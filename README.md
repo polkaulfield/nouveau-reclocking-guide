@@ -1,9 +1,10 @@
 # Nouveau Reclocking Guide
 
-### Credits
+### Credits.
 Tomasz Pawlak at the Debian forums (http://forums.debian.net/viewtopic.php?f=16&t=146141&sid=c9248fe2c9ea322c065ff9023f47f019)
 
-### Intro: Nouveau supports pstates for some cards, you can reclock them and get better performance, 80% ~ of the Nvidia blobs in my case.
+### Intro. 
+Nouveau supports pstates for some cards, you can reclock them and get better performance, 80% ~ of the Nvidia blobs in my case.
 As it says here (https://nouveau.freedesktop.org/), reclocking is supported on GM10x Maxwell, Kepler and Tesla G94-GT218 GPUs.
 I have tested it on Fedora 33 with a MSI GT 710 2GB, no problems so far.
 

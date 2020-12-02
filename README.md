@@ -46,7 +46,7 @@ sudo chmod u+s /usr/local/bin/nv_pstate
 Now we need to create a file in **/etc/systemd/system/nv_pstate.service** with these contents:
 ```ini
 [Unit]
-Description=switch nv card to a powersave mode (pstate)
+Description=Switch nv card to performance mode (pstate)
 
 [Service]
 Type=oneshot

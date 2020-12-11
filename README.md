@@ -33,35 +33,9 @@ echo 0f | sudo tee -a /sys/kernel/debug/dri/0/pstate
 If you find that setting stable, lets move to the next step.
 
 ### Applying pstates at boot.
-Tomasz Pawlak at the [Debian forums](http://forums.debian.net/viewtopic.php?f=16&t=146141&sid=c9248fe2c9ea322c065ff9023f47f019) made a C application that can switch between pstates and found how to apply them at boot using a systemd service.
-This is important because a script wont work because we need to set the setuid bit to a binary in order to do that.
-
-Clone this repo, compile nv_pstate.c and install it with:
-```sh
-gcc -O1 -s -o nv_pstate nv_pstate.c
-sudo mv nv_pstate /usr/local/bin
-sudo chmod u+s /usr/local/bin/nv_pstate
+Add this kernel parameter in your GRUB config. The number must be the decimal of the number you got earlier (0x7=15)
+```
+nouveau.config=NvClkMode=15
 ```
 
-Now we need to create a file in **/etc/systemd/system/nv_pstate.service** with these contents:
-```ini
-[Unit]
-Description=Switch nv card to performance mode (pstate)
-
-[Service]
-Type=oneshot
-Restart=no
-ExecStart=/usr/local/bin/nv_pstate -c0 -s0xf
-
-[Install]
-WantedBy=graphical.target
-```
-Where **-c0** refers to your card number and **-s0xf** refers to the pstate (we used 0f in our testing).
-
-Now just enable the service with:
-```sh
-sudo systemctl daemon-reload
-sudo systemctl enable nv_pstate.service
-```
-
-Reboot and you should be good to go!
+Remake grub.cfg and you should be good to go!

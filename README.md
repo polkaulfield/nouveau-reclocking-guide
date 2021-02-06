@@ -30,7 +30,7 @@ echo 0f | sudo tee -a /sys/kernel/debug/dri/0/pstate
 If you find that setting stable, lets move to the next step.
 
 ### Applying pstates at boot.
-Add this kernel parameter in your GRUB config. The number must be the decimal of the number you got earlier (0x7=15)
+Add this kernel parameter in your GRUB config. The number must be the decimal of the number you got earlier (0xf=15)
 ```
 nouveau.config=NvClkMode=15
 ```
